@@ -98,10 +98,10 @@ int main() {
     }
 
     printf("\n\n");
-    printf("Your monthly sales for 2026:\nMonth %10s", "Sales\n\n");
+    printf("Your monthly sales for 2026:\n%-10s Sales\n\n", "Month");
     for (int i = 0; i < 12; i++) {
 
-        printf("%s: %10.2f\n", which_month(i+1), monthly_sales[i]);
+        printf("%-10s %.2f\n", which_month(i+1), monthly_sales[i]);
     }
 
 }
