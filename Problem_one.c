@@ -81,7 +81,7 @@ void sales_summary (float mon_sales_ar[]) {
     avg /= 12;
 
     printf("Sales summary report:\n");
-    prinrf("Minimum sales: %.2f (%s)\n", min, which_month(min_month));
+    printf("Minimum sales: %.2f (%s)\n", min, which_month(min_month));
     printf("Maximum sales: %.2f (%s)\n", max, which_month(max_month));
     printf("Average sales: %.2f\n", avg);
 }
