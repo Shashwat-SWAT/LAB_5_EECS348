@@ -58,7 +58,19 @@ char *which_month(int num_month) {
 
 }
 
+void monthly_sales_print(float mon_sales_ar[]) {
+    
+    printf("Your monthly sales for 2026:\n\n");
+    printf("%-10s Sales\n", "Month");
+
+    for (int i = 0; i < 12; i++) {
+
+        printf("%-10s %.2f\n", which_month(i+1), mon_sales_ar[i]);
+    }
+}
+
 void sales_summary (float mon_sales_ar[]) {
+    
     float max_month, max, min_month, min, avg = 0.0;
     max = mon_sales_ar[0];
     max_month = 0;
@@ -66,23 +78,23 @@ void sales_summary (float mon_sales_ar[]) {
     min_month = 0;
 
     for (int i = 0; i<12; i++) {
-        if (max > mon_sales_ar[0]) {
-            max = mon_sales_ar[0];
+        if (max > mon_sales_ar[i]) {
+            max = mon_sales_ar[i];
             max_month = i+1;
         }
-        if (min < mon_sales_ar[0]) {
-            min = mon_sales_ar[0];
+        if (min < mon_sales_ar[i]) {
+            min = mon_sales_ar[i];
             min_month = i+1;
         }
 
-        avg += mon_sales_ar[0];
+        avg += mon_sales_ar[i];
     }
 
     avg /= 12;
 
     printf("Sales summary report:\n");
-    printf("Minimum sales: %.2f (%s)\n", min, which_month(min_month));
-    printf("Maximum sales: %.2f (%s)\n", max, which_month(max_month));
+    printf("Minimum sales: %-10.2f (%s)\n", min, which_month(min_month));
+    printf("Maximum sales: %-10.2f (%s)\n", max, which_month(max_month));
     printf("Average sales: %.2f\n", avg);
 }
 
@@ -91,13 +103,13 @@ void six_mon_move_avg(float mon_sales_ar[]) {
     float moving_avg_6_mon = 0.0;
     ("Six-Month moving average report:\n\n");
 
-    for (int i=0; i<6; i++) {
+    for (int i=0; i<7; i++) {
         for (int j=i; j<i+6; j++) {
             // starts from any iteration of i and ends with the 6th value you get from starting at i.
             moving_avg_6_mon += mon_sales_ar[j];
         }
         moving_avg_6_mon /= 6;
-        printf("%s-%-10s %.2f", which_month(i+1), which_month(i+6), moving_avg_6_mon);
+        printf("%s-%-10s %.2f\n", which_month(i+1), which_month(i+6), moving_avg_6_mon);
     }
 
 }
@@ -113,17 +125,17 @@ int main() {
         scanf("%f", &temp);
         monthly_sales[i] = temp;
     }
-
-    printf("\n\n");
-    printf("Your monthly sales for 2026:\n\n%-10s Sales\n", "Month");
-    for (int i = 0; i < 12; i++) {
-
-        printf("%-10s %.2f\n", which_month(i+1), monthly_sales[i]);
-    }
+    
+    // //Monthly sales
+    // printf("\n");
+    // monthly_sales_print(monthly_sales);
 
     //Sales summary report
+    printf("\n");
     sales_summary(monthly_sales);
 
-
+    // //Moving avg of six months
+    // printf("\n");
+    // six_mon_move_avg(monthly_sales);
 
 }
