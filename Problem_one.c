@@ -114,6 +114,41 @@ void six_mon_move_avg(float mon_sales_ar[]) {
 
 }
 
+void high_t_low_sales(float mon_sales_ar[]) {
+
+
+    float copy_ar[12];
+
+    for (int i=0; i<12; i++) {
+        copy_ar[i] = mon_sales_ar[i];
+    }
+
+    for (int i=0; i<12; i++) {
+        float temp = copy_ar[i];
+
+        for (int j=0; j<12; j++) {
+            float temp_j = copy_ar[j];
+
+            if (temp < copy_ar[j]) {
+                // replacing the smaller value to later position, and vise versa
+
+                copy_ar[j] = temp;
+                copy_ar[i] = temp_j;
+            }
+        }
+    }
+
+    printf("Sales report (highest to lowest):\n\n");
+    printf("%-10s Sales\n", "Month");
+
+        for (int i=0; i<12; i++) {
+        printf("%-10s %.2f\n", which_month(i+1), copy_ar[i]);
+    }
+    
+
+
+}
+
 int main() {
 
     float monthly_sales[12];
@@ -130,12 +165,17 @@ int main() {
     // printf("\n");
     // monthly_sales_print(monthly_sales);
 
-    //Sales summary report
-    printf("\n");
-    sales_summary(monthly_sales);
+    // //Sales summary report
+    // printf("\n");
+    // sales_summary(monthly_sales);
 
     // //Moving avg of six months
     // printf("\n");
     // six_mon_move_avg(monthly_sales);
+
+    //Monthly sales from highest to lowest
+    printf("\n");
+    high_t_low_sales(monthly_sales);
+
 
 }
