@@ -158,17 +158,17 @@ int main() {
         monthly_sales[i] = temp;
     }
     
-    // //Monthly sales
-    // printf("\n");
-    // monthly_sales_print(monthly_sales);
+    //Monthly sales
+    printf("\n");
+    monthly_sales_print(monthly_sales);
 
-    // //Sales summary report
-    // printf("\n");
-    // sales_summary(monthly_sales);
+    //Sales summary report
+    printf("\n");
+    sales_summary(monthly_sales);
 
-    // //Moving avg of six months
-    // printf("\n");
-    // six_mon_move_avg(monthly_sales);
+    //Moving avg of six months
+    printf("\n");
+    six_mon_move_avg(monthly_sales);
 
     //Monthly sales from highest to lowest
     printf("\n");
