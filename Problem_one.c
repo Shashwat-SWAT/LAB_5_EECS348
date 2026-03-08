@@ -123,20 +123,17 @@ void high_t_low_sales(float mon_sales_ar[]) {
         copy_ar[i] = mon_sales_ar[i];
     }
 
-    for (int i=0; i<12; i++) {
-        float temp = copy_ar[i];
+for (int i = 0; i < 11; i++) {
+    for (int j = i + 1; j < 12; j++) {
 
-        for (int j=0; j<12; j++) {
-            float temp_j = copy_ar[j];
-
-            if (temp < copy_ar[j]) {
-                // replacing the smaller value to later position, and vise versa
-
-                copy_ar[j] = temp;
-                copy_ar[i] = temp_j;
-            }
+        if (copy_ar[i] < copy_ar[j]) {   // descending
+            float temp = copy_ar[i];
+            copy_ar[i] = copy_ar[j];
+            copy_ar[j] = temp;
         }
+
     }
+}
 
     printf("Sales report (highest to lowest):\n\n");
     printf("%-10s Sales\n", "Month");
