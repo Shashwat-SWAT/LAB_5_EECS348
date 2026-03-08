@@ -53,11 +53,11 @@ int main() {
     printMatrix(result);
 
     multiplyMatrices(m1, m2, result);
-    printf("Product of matrices:\n");
+    printf("P\nroduct of matrices:\n");
     printMatrix(result);
 
     transposeMatrix(m1, result);
-    printf("Transpose of matrix m1:\n");
+    printf("\nTranspose of matrix m1:\n");
     printMatrix(result);
 
     return 0;
